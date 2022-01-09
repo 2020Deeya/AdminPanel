@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Favorite Animal</h1>
+<div mat-dialog-content>
+  My favorite animal is:
+  <ul>
+    <li>
+      <span>&#10003;</span> Panda
+    </li>
+    <li>
+      <span>&#10003;</span> Unicorn
+    </li>
+    <li>
+      <span>&#10003;</span> Lion
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button mat-dialog-close (click)="submit()" cdkFocusInitial>Install</button>
+</div>
+

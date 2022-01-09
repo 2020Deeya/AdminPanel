@@ -1,0 +1,16 @@
+@import "../home/home.component.scss";
+table {
+    table-layout:fixed;
+    word-wrap: break-word;
+    width: 99%;
+  }
+  
+  td, th {
+    font-size: medium;
+    width: 40%;
+  }
+ 
+
+  .modal{
+    z-index: 2147483647;
+  }
