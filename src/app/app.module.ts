@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DialogDataExampleDialog } from './dashboard/dashboard.component';
 
 //Imported for Interactive Design
 import {MatDividerModule} from '@angular/material/divider';
@@ -20,6 +21,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     HeaderComponent,
     SidenavComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    DialogDataExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatListModule,
     MatButtonModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [],
   entryComponents: [MatDialogModule],

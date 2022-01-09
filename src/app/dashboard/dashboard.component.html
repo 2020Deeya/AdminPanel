@@ -20,16 +20,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
+                        <tr *ngFor = "let product of productList">
+                            <td>{{product.id}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{{product.description}}</td>
+                            <td>{{product.photo}}</td>
+                            <td>{{product.category}}</td>
+                            
                             <td>
-                                <button mat-raised-button color="primary">Edit</button>&nbsp;
-                                <button mat-raised-button color="warn">Delete</button>
+                                <button mat-raised-button color="primary" (click)="updateDetails(product)">Edit</button>&nbsp;
+                                <button mat-raised-button color="warn" (click)="deleteDetails(product)">Delete</button>
                             </td>
                         </tr>
                     </tbody>

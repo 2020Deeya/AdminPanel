@@ -1,8 +1,9 @@
-export interface Product{
-    id:string;
-    name:string;
-    price:string;
-    description:string;
+export class Product{
+    id:number = 0;
+    name:string = '';
+    price:string = '';
+    description:string = '';
+    photo:string = '';
     //photo?:HTMLImageElement;
-    category:string;
+    category:string = '';
 }

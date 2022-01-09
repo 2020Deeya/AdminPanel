@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "Deeya",
+      "price": "50",
+      "description": "I am pretty",
+      "photo": "nil",
+      "category": "Female"
+    },
+    {
+      "id": 3,
+      "name": "mumm",
+      "price": "40",
+      "description": "I am beautiful",
+      "photo": "nil",
+      "category": "male"
+    },
+    {
+      "id": 4,
+      "name": "kamla",
+      "price": "",
+      "description": "",
+      "photo": "",
+      "category": ""
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
