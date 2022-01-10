@@ -18,6 +18,7 @@ import {AlertService} from '../shared/alert.service';
 export class DashboardComponent implements OnInit {
 
   private _listFilter: string = '';
+  p:number = 1;
   
   get listFilter(): string {
     return this._listFilter;
@@ -40,6 +41,13 @@ export class DashboardComponent implements OnInit {
     filterBy = filterBy.toLocaleLowerCase();
     return this.productList.filter((product: Product) =>
       product.name.toLocaleLowerCase().includes(filterBy));
+  }
+
+  key:string = 'id';
+  reverse:boolean = false;
+  sort(key){
+      this.key=key;
+      this.reverse=!this.reverse;
   }
 
   openDialog() {

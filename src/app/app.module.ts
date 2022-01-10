@@ -26,6 +26,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {FormsModule} from '@angular/forms';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -57,7 +59,9 @@ import {FormsModule} from '@angular/forms';
     MatSnackBarModule,
     CommonModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    Ng2OrderModule,
+    NgxPaginationModule
   ],
   providers: [],
   entryComponents: [MatDialogModule],

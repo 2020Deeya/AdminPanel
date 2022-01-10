@@ -47,16 +47,7 @@
       "description": "It is an average product. The rating is 3.0 out of 5.",
       "photo": "nil",
       "category": "gadgets"
-    },
-    {
-      "id": 7,
-      "name": "Bread",
-      "price": "60",
-      "description": "It is a Genuine product. The rating is 3.5 out of 5.",
-      "photo": "nil",
-      "category": "groceries"
     }
-   
   ],
   "comments": [],
   "profile": {

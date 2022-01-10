@@ -14,3 +14,10 @@ table {
   .modal{
     z-index: 2147483647;
   }
+
+  .clearFix{
+    position: absolute;
+    right:35%;
+    left:60%;
+    font-size: 14px;
+  }
