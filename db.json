@@ -2,28 +2,61 @@
   "posts": [
     {
       "id": 1,
-      "name": "Deeya",
-      "price": "50",
-      "description": "I am pretty",
+      "name": "Jeans",
+      "price": "1000",
+      "description": "Very nice product. The rating is 4 out of 5.",
       "photo": "nil",
-      "category": "Female"
+      "category": "clothes"
+    },
+    {
+      "id": 2,
+      "name": "Shampoo",
+      "price": "600",
+      "description": "Very genuine product. The rating is 4.5 out of 5.",
+      "photo": "nil",
+      "category": "groceries"
     },
     {
       "id": 3,
-      "name": "mumm",
-      "price": "40",
-      "description": "I am beautiful",
+      "name": "Shirt",
+      "price": "900",
+      "description": "Very genuine and nice product. The rating is 4.5 out of 5.",
       "photo": "nil",
-      "category": "male"
+      "category": "clothes"
     },
     {
       "id": 4,
-      "name": "kamla",
-      "price": "",
-      "description": "",
-      "photo": "",
-      "category": ""
+      "name": "Oil",
+      "price": "50",
+      "description": "Very genuine and healthy product. The rating is 4.5 out of 5.",
+      "photo": "nil",
+      "category": "groceries"
+    },
+    {
+      "id": 5,
+      "name": "Formals",
+      "price": "2000",
+      "description": "Very genuine and smart product. The rating is 4.5 out of 5.",
+      "photo": "nil",
+      "category": "clothes"
+    },
+    {
+      "id": 6,
+      "name": "Watch",
+      "price": "800",
+      "description": "It is an average product. The rating is 3.0 out of 5.",
+      "photo": "nil",
+      "category": "gadgets"
+    },
+    {
+      "id": 7,
+      "name": "Bread",
+      "price": "60",
+      "description": "It is a Genuine product. The rating is 3.5 out of 5.",
+      "photo": "nil",
+      "category": "groceries"
     }
+   
   ],
   "comments": [],
   "profile": {

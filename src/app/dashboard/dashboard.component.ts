@@ -1,8 +1,9 @@
 import {Component, OnInit,Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {FormBuilder,FormGroup} from '@angular/forms';
+import {FormBuilder,FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../shared/api.service';
 import { Product } from '../model/product';
+import {AlertService} from '../shared/alert.service';
 
 
 /**
@@ -16,11 +17,29 @@ import { Product } from '../model/product';
 })
 export class DashboardComponent implements OnInit {
 
+  private _listFilter: string = '';
+  
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this.performFilter(value);
+  }
+
+  filteredProducts: Product[] = [];
+
   productList: any;
-  constructor(public dialog: MatDialog,private api:ApiService) {}
+  constructor(public dialog: MatDialog,private api:ApiService,private alertService: AlertService) {}
 
   ngOnInit(): void {
     this.getProductDetails();
+  }
+
+  performFilter(filterBy: string): Product[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.productList.filter((product: Product) =>
+      product.name.toLocaleLowerCase().includes(filterBy));
   }
 
   openDialog() {
@@ -39,22 +58,27 @@ export class DashboardComponent implements OnInit {
   getProductDetails(){
     this.api.getProduct()
     .subscribe(res => {
-      console.log("Fetched");
+      //this.alertService.showNotification('Product list loaded successfully. Yay :)','OK','success');
       this.productList = res;
+      this.listFilter = '';
+      if(this.productList.length == 0){
+        this.alertService.showNotification('Oops! No data is present for now :(','OK','nothing');
+      }
+      
     },
     err => {
-      console.log("Error");
+      this.alertService.showNotification('There was an error in receiving data from server! Please try again.','OK','error');
     })
   }
 
   deleteDetails(data:any){
     this.api.deleteProduct(data.id)
     .subscribe(res => {
-      console.log("Deleted");
+      this.alertService.showNotification('Product deleted successfully. Yay :)','OK','success');
       this.getProductDetails();
     },
     err => {
-      console.log("Error");
+      this.alertService.showNotification('There was an error in deleting data! Please try again.','OK','error');
     })
   }
 
@@ -66,7 +90,6 @@ export class DashboardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result!==undefined && result.event==='refresh'){
-        console.log("Refreshed");
         this.getProductDetails();
       }
     });
@@ -74,6 +97,7 @@ export class DashboardComponent implements OnInit {
 
 }
  
+  //Dialog Component opened 
   @Component({
     selector: 'dialog-data-example-dialog',
     templateUrl: './dialog-data-example-dialog.html',
@@ -83,16 +107,17 @@ export class DashboardComponent implements OnInit {
     formValue !: FormGroup;
     productObj : Product = new Product();
     isAdd: boolean;
-    fromDialog: any = "refresh";
-    constructor(@Inject(MAT_DIALOG_DATA) public data,public dialogRef:MatDialogRef<DialogDataExampleDialog>,private formBuilder:FormBuilder, private api:ApiService) {}
+    
+    constructor(@Inject(MAT_DIALOG_DATA) public data,public dialogRef:MatDialogRef<DialogDataExampleDialog>,private formBuilder:FormBuilder, private api:ApiService,private alertService: AlertService) {}
     
     ngOnInit():void{
       this.formValue= this.formBuilder.group({
-        name:[''],
-        price:[''],
-        description:[''],
+        name:['',[Validators.required]],
+        price:['',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+        description:['',[Validators.minLength(20), Validators.maxLength(100)]],
         photo:[''],
-        category:['']
+        //fileSource:[''],
+        category:['',[Validators.required]]
       })
       //update or add
       if(Object.keys(this.data).length===0){
@@ -118,12 +143,12 @@ export class DashboardComponent implements OnInit {
 
       this.api.postProduct(this.productObj)
          .subscribe(res => {
-           console.log("Added");
+          this.alertService.showNotification('New Product has been added successfully. Yay :)','OK','success');
            this.formValue.reset();
-           this.dialogRef.close({event:'refresh',data:this.fromDialog});
+           this.dialogRef.close({event:'refresh'});
          },
          err => {
-           console.log("Error");
+          this.alertService.showNotification('There was an error in adding data to server! Please try again.','OK','error');
          })
     }
     
@@ -137,17 +162,26 @@ export class DashboardComponent implements OnInit {
       this.productObj.category = this.formValue.value.category;
       this.api.updateProduct(this.productObj, this.productObj.id)
         .subscribe(res => {
-          console.log("Updated");
-          this.dialogRef.close({event:'refresh',data:this.fromDialog});
+          this.alertService.showNotification('Product has been updated successfully. Yay :)','OK','success');
+          this.dialogRef.close({event:'refresh'});
         },
           err => {
-            console.log("Error");
+            this.alertService.showNotification('There was an error in updating data to server! Please try again.','OK','error');
           })
     }
 
     close(){
       this.dialogRef.close();
     }
+
+    /*onFileChange(event){
+      if(event.target.files.length > 0){
+        const file = event.target.files[0];
+        this.formValue.patchValue({
+          fileSource:file
+        })
+      }  
+    }*/
     
   }
 

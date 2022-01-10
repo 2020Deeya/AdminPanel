@@ -9,7 +9,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DialogDataExampleDialog } from './dashboard/dashboard.component';
-
+import { AlertComponent } from './common/alert/alert.component';
 //Imported for Interactive Design
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
@@ -22,6 +22,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {CommonModule} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
+import {FormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -31,7 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidenavComponent,
     HomeComponent,
     DashboardComponent,
-    DialogDataExampleDialog
+    DialogDataExampleDialog,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     HttpClientModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    CommonModule,
+    MatCardModule,
+    FormsModule
   ],
   providers: [],
   entryComponents: [MatDialogModule],

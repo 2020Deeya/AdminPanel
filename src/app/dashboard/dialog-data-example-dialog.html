@@ -2,29 +2,51 @@
 <div mat-dialog-content>
 
   <form [formGroup]="formValue">
-    <!--<div class="mb-3" *ngIf=isAdd>
-      <label for="exampleInputEmail1" class="form-label">Product ID</label>
-      <input type="text" formControlName="id" class="form-control" id="exampleInputEmail1">
-    </div>-->
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Name</label>
-      <input type="text" formControlName="name" class="form-control" id="exampleInputPassword1">
+      <label for="exampleInputPassword1" class="form-label">Name<span>*</span></label>
+      <input type="text" formControlName="name" placeholder="name" class="form-control" id="exampleInputPassword1">
+      <small class="text-danger" *ngIf="formValue.get('name').hasError('required')">
+        Name is required.
+      </small>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Price</label>
-      <input type="text" formControlName="price" class="form-control" id="exampleInputPassword1">
+      <label for="exampleInputPassword1" class="form-label">Price<span>*</span></label>
+      <input type="text" formControlName="price" placeholder="price" class="form-control" id="exampleInputPassword1">
+      <small class="text-danger" *ngIf="formValue.get('price').hasError('required')">
+        Price is required in Rupees.
+      </small>
+      <small class="text-danger" *ngIf="formValue.get('price').hasError('pattern')">
+        Format is not valid in Rupees.
+      </small>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Description</label>
-      <input type="text" formControlName="description" class="form-control" id="exampleInputPassword1">
+      <textarea formControlName="description" class="form-control" id="exampleInputPassword1"></textarea>
+      <small class="text-danger"
+      *ngIf="formValue.get('description').hasError('minlength')">
+      The minimum length for this field is {{formValue.get('description').errors.minlength.requiredLength}} characters.
+      </small>
+      <small class="text-danger"
+      *ngIf="formValue.get('description').hasError('maxlength')">
+      The maximum length for this field is {{formValue.get('description').errors.maxlength.requiredLength}} characters.
+  </small>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Photo URL</label>
-      <input type="text" formControlName="photo" class="form-control" id="exampleInputPassword1">
+      <input formControlName="photo" placeholder="photo URL" class="form-control" id="exampleInputPassword1">
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Category</label>
-      <input type="text" formControlName="category" class="form-control" id="exampleInputPassword1">
+      <label for="exampleInputPassword1" class="form-label">Category<span>*</span></label>
+      <!--<input type="text" formControlName="category" class="form-control" id="exampleInputPassword1">-->
+      <select formControlName="category" class="form-control" id="exampleInputPassword1">
+        <option value="" disabled>Select Categories</option>
+        <option value="groceries">Groceries</option>
+        <option value="clothes">Clothes</option>
+        <option value="gadgets">Gadgets</option>
+      </select>
+      <small class="text-danger" *ngIf="formValue.get('category').hasError('required')">
+        Category is required.
+      </small>
     </div>
 
   </form>
@@ -32,9 +54,9 @@
 </div>
 <div mat-dialog-actions *ngIf=isAdd>
   <button mat-button color="accent" (click)="close()">CLOSE</button>
-  <button mat-raised-button color="primary" (click)="postProductDetails()" cdkFocusInitial>ADD</button>
+  <button mat-raised-button color="primary" (click)="postProductDetails()" cdkFocusInitial [disabled]="!formValue.valid">ADD</button>
 </div>
 <div mat-dialog-actions *ngIf=!isAdd>
   <button mat-button color="accent" (click)="close()">CLOSE</button>
-  <button mat-raised-button color="primary" (click)="updateDetailsForm()" cdkFocusInitial>Update</button>
+  <button mat-raised-button color="primary" (click)="updateDetailsForm()" cdkFocusInitial [disabled]="!formValue.valid">Update</button>
 </div>

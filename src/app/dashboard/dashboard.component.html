@@ -1,59 +1,47 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">
-        DashBoard
-        <button mat-button (click)="openDialog()" style="position: absolute; right: 0; width: 150px; padding: 16px; font-size: 20px;">Add Product</button>
+        Search by Product Name <span> - </span>&nbsp;<input type='text' style="width: 500px; height: 50px;" [(ngModel)]='listFilter' />
     </div>
     <div class="page__content shadow p-3 position-relative">
         <div class="page__content-data position-absolute text-center">
             <!--DashBoard Content Goes Here-->
-              
-            <table class="table table-bordered mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">Product ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Photo URL</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor = "let product of productList">
-                            <td>{{product.id}}</td>
-                            <td>{{product.name}}</td>
-                            <td>{{product.price}}</td>
-                            <td>{{product.description}}</td>
-                            <td>{{product.photo}}</td>
-                            <td>{{product.category}}</td>
-                            
-                            <td>
-                                <button mat-raised-button color="primary" (click)="updateDetails(product)">Edit</button>&nbsp;
-                                <button mat-raised-button color="warn" (click)="deleteDetails(product)">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-            </table>
-<!-- Modal 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="card">
+                <div class="card-header text-center">
+                    <button mat-raised-button color="primary" (click)="openDialog()" style="height: 50px">Add Product</button> 
+                    <!--<button mat-raised-button (click)="openDialog()" style="position: absolute; right: 0; width: 150px; padding: 16px; font-size: 20px;">Add Product</button>-->
+                 </div>
+                 <div class="card-body">
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Photo URL</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let product of filteredProducts">
+                                <td>{{product.id}}</td>
+                                <td>{{product.name}}</td>
+                                <td>{{product.price}}</td>
+                                <td>{{product.description}}</td>
+                                <td>{{product.photo}}</td>
+                                <!--<img src="{{product.photo}}" alt="Image" width="60px">-->
+                                <td>{{product.category}}</td>
+                                
+                                <td>
+                                    <button mat-raised-button color="primary" (click)="updateDetails(product)">Edit</button>&nbsp;
+                                    <button mat-raised-button color="warn" (click)="deleteDetails(product)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 </div>
             </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-        </div>
-    </div>
-</div>-->
         </div>
     </div>
 </div>
