@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogDataExampleDialog, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       data: {},
       //disableClose:true,
       width:'600px'
@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
   }
 
   updateDetails(data:any){
-    const dialogRef = this.dialog.open(DialogDataExampleDialog, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       data: data,
       //disableClose:true,
       width:'600px'
@@ -107,16 +107,16 @@ export class DashboardComponent implements OnInit {
  
   //Dialog Component opened 
   @Component({
-    selector: 'dialog-data-example-dialog',
-    templateUrl: './dialog-data-example-dialog.html',
+    selector: 'dialog-data',
+    templateUrl: './dialog.html',
   })
-  export class DialogDataExampleDialog implements OnInit {
+  export class DialogComponent implements OnInit {
     title:any;
     formValue !: FormGroup;
     productObj : Product = new Product();
     isAdd: boolean;
     
-    constructor(@Inject(MAT_DIALOG_DATA) public data,public dialogRef:MatDialogRef<DialogDataExampleDialog>,private formBuilder:FormBuilder, private api:ApiService,private alertService: AlertService) {}
+    constructor(@Inject(MAT_DIALOG_DATA) public data,public dialogRef:MatDialogRef<DialogComponent>,private formBuilder:FormBuilder, private api:ApiService,private alertService: AlertService) {}
     
     ngOnInit():void{
       this.formValue= this.formBuilder.group({

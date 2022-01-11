@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DialogDataExampleDialog } from './dashboard/dashboard.component';
+import { DialogComponent } from './dashboard/dashboard.component';
 import { AlertComponent } from './common/alert/alert.component';
 //Imported for Interactive Design
 import {MatDividerModule} from '@angular/material/divider';
@@ -38,7 +38,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SidenavComponent,
     HomeComponent,
     DashboardComponent,
-    DialogDataExampleDialog,
+    DialogComponent,
     AlertComponent
   ],
   imports: [
