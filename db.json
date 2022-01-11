@@ -20,7 +20,7 @@
       "id": 3,
       "name": "Shirt",
       "price": "900",
-      "description": "Very genuine and nice product. The rating is 4.5 out of 5.",
+      "description": "Very genuine and nice product. The rating is 4.0 out of 5.",
       "photo": "nil",
       "category": "clothes"
     },
@@ -48,6 +48,7 @@
       "photo": "nil",
       "category": "gadgets"
     }
+
   ],
   "comments": [],
   "profile": {
